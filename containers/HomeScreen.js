@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FontAwesone } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import {
   Button,
@@ -27,7 +27,7 @@ export default function HomeScreen({ navigation }) {
         );
 
         setData(response.data);
-        console.log(response.data);
+        // console.log(response.data);
 
         setIsLoading(false);
       } catch (error) {
@@ -44,14 +44,14 @@ export default function HomeScreen({ navigation }) {
 
     for (let i = 1; i <= 5; i++) {
       if (ratingValue >= i) {
-        tab.push(<FontAwesone name="star" size={24} color="gold" key={i} />);
+        tab.push(<FontAwesome name="star" size={24} color="gold" key={i} />);
       }
       if (ratingValue < i && tab.length < 5) {
-        tab.push(<FontAwesone name="star" size={24} color="grey" key={i} />);
+        tab.push(<FontAwesome name="star" size={24} color="grey" key={i} />);
       }
       if (flooredNum === i && isDecimal) {
         tab.push(
-          <FontAwesone name="half-star-empty" size={24} color="black" key={i} />
+          <FontAwesome name="star-half-empty" size={24} color="black" key={i} />
         );
       }
     }
@@ -85,7 +85,7 @@ export default function HomeScreen({ navigation }) {
             <View style={styles.view}>
               <View style={{ flex: 1 }}>
                 <Text>{item.title}</Text>
-                <View style={styles.row}>{displayStars(3.5)}</View>
+                <View style={styles.row}>{displayStars(item.ratingValue)}</View>
               </View>
               <Image
                 style={styles.userImage}
